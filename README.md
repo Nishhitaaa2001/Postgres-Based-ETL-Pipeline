@@ -119,11 +119,4 @@ pandas
 
 numpy
 
-📜 License
-Licensed under the MIT License.
-See the LICENSE file for more details.
 
-✨ Author
-Nishita Rajak
-Data Engineering & Analytics
-🔗 Feel free to ⭐ this repository if you find it useful!
