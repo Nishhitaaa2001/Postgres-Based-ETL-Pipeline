@@ -1,26 +1,77 @@
+Postgres-Based-ETL-Pipeline
+A robust ETL pipeline for processing and analyzing music streaming data using PostgreSQL as the backend database. This project is designed to extract, transform, and load song and user activity data from JSON files into a structured database for analytics and reporting.
 
-# Data Modeling and ETL Project
+Table of Contents
+Project Overview
 
-The goal of this project is to create a database schema and ETL pipeline for a music streaming app called Sparkify. Sparkify wants to analyze the user activity data of the app.
+Architecture
 
+Data Sources
 
+Pipeline Workflow
 
-## How to Run
-In order to run this pipeline, ```create_tables.py``` and ```etl.py``` need to be run in order.
-## Files
+How to Run
 
-### create_tables.py
-This script prepares the database by doing the following actions: 
-1) Creates the sparkify database. 
-2) Establishes connection with the sparkify database and gets cursor to it.  
-3) Drops all the tables on the database.  
-4) Creates all tables needed and closes the connection.
+File Structure
 
-### etl.py
-This script runs the ETL process by doing the following actions: 
-1) Extracts data from the json files that contain song data and inserts them to the database.
-2) Extracts data from user activity json files. Runs several data transformations on the data and merges it with the song and artist data. Finally, loads the data into the database. 
+Dependencies
 
-#### sql_queries.py
-This script contains the SQL queries that are utilized by the functions in create_tables.py and etl.py 
+License
 
+Project Overview
+This project enables the creation of a scalable data pipeline for Sparkify, a music streaming app. The pipeline processes raw JSON data (song metadata and user activity logs), transforms it, and loads it into a PostgreSQL database for efficient querying and analysis.
+
+Architecture
+Database: PostgreSQL for storing structured data.
+
+ETL Pipeline: Python scripts for data extraction, transformation, and loading.
+
+Schema: Star schema with fact and dimension tables for analytics.
+
+Data Sources
+Song Data: JSON files containing song metadata (title, artist, duration, year, etc.).
+
+User Activity Logs: JSON files recording user song plays, timestamps, and session details.
+
+Pipeline Workflow
+Extract: Read JSON files for songs and user activity.
+
+Transform: Clean, filter, and enrich data (e.g., timestamp parsing, song/artist matching).
+
+Load: Insert processed data into PostgreSQL tables.
+
+How to Run
+Clone the repository.
+
+Install dependencies (see below).
+
+Run the following scripts in order:
+
+bash
+python create_tables.py
+python etl.py
+The database will be populated with processed data.
+
+File Structure
+text
+Postgres-Based-ETL-Pipeline/
+├── create_tables.py      # Creates and manages database tables
+├── etl.py              # ETL pipeline script
+├── sql_queries.py      # SQL queries for table creation and data insertion
+├── test.ipynb          # Jupyter notebook for testing and validation
+└── README.md           # This file
+Dependencies
+Python 3.x
+
+psycopg2
+
+pandas
+
+numpy
+
+Install dependencies using:
+
+bash
+pip install psycopg2 pandas numpy
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
