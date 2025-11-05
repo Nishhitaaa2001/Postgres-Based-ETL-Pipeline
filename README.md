@@ -112,11 +112,8 @@ Postgres-Based-ETL-Pipeline/
 Python 3.x
 
 PostgreSQL
-
 psycopg2
-
 pandas
-
 numpy
 
 
