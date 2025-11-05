@@ -1,67 +1,117 @@
-Postgres-Based-ETL-Pipeline
-A robust ETL pipeline for processing and analyzing music streaming data using PostgreSQL as the backend database. This project is designed to extract, transform, and load song and user activity data from JSON files into a structured database for analytics and reporting.
+ 🎧 Postgres-Based ETL Pipeline
 
-Table of Contents
-Project Overview
+A robust ETL pipeline for processing and analyzing **music streaming data** using **PostgreSQL** as the backend data warehouse.  
+This project extracts, transforms, and loads song metadata and user activity logs from JSON files into a structured **star schema** for analytics and reporting.
 
-Architecture
+---
 
-Data Sources
+## 📌 Table of Contents
+- [Project Overview](#project-overview)
+- [Architecture](#architecture)
+- [Data Sources](#data-sources)
+- [Schema Design](#schema-design)
+- [Pipeline Workflow](#pipeline-workflow)
+- [How to Run](#how-to-run)
+- [Project Structure](#project-structure)
+- [Dependencies](#dependencies)
+- [License](#license)
 
-Pipeline Workflow
+---
 
-How to Run
+## 📖 Project Overview
+This project builds a scalable ETL pipeline for a sample music streaming platform (**Sparkify**).  
+It processes song metadata and user activity logs stored as JSON files and loads them into PostgreSQL for faster querying, reporting, and insights into user listening behavior.
 
-File Structure
+---
 
-Dependencies
+## 🏗️ Architecture
 
-License
+| Component       | Technology |
+|----------------|------------|
+| Database       | PostgreSQL |
+| ETL Processing | Python     |
+| Data Format    | JSON       |
 
-Project Overview
-This project enables the creation of a scalable data pipeline for Sparkify, a music streaming app. The pipeline processes raw JSON data (song metadata and user activity logs), transforms it, and loads it into a PostgreSQL database for efficient querying and analysis.
+ETL Pipeline:
+Extract → Transform → Load → Query → Analytics
 
-Architecture
-Database: PostgreSQL for storing structured data.
+yaml
+Copy code
 
-ETL Pipeline: Python scripts for data extraction, transformation, and loading.
+---
 
-Schema: Star schema with fact and dimension tables for analytics.
+## 📂 Data Sources
+| Dataset | Description |
+|--------|-------------|
+| **Song Data** | Contains song metadata (title, artist, duration, year) |
+| **User Logs** | App events recording song plays, user activity & timestamps |
 
-Data Sources
-Song Data: JSON files containing song metadata (title, artist, duration, year, etc.).
+---
 
-User Activity Logs: JSON files recording user song plays, timestamps, and session details.
+## ⭐ Schema Design (Star Schema)
 
-Pipeline Workflow
-Extract: Read JSON files for songs and user activity.
+**Fact Table**
+- `songplays` — records for each user song stream event
 
-Transform: Clean, filter, and enrich data (e.g., timestamp parsing, song/artist matching).
+**Dimension Tables**
+- `users` — user attributes (level, gender, name, etc.)
+- `songs` — song details (title, duration, year)
+- `artists` — artist metadata (name, location)
+- `time` — timestamp breakdown (hour, day, month, year, weekday)
 
-Load: Insert processed data into PostgreSQL tables.
+This structure supports **analytical queries and BI dashboards**.
 
-How to Run
-Clone the repository.
+---
 
-Install dependencies (see below).
+## 🔄 Pipeline Workflow
+| Phase | Details |
+|------|---------|
+| **Extract** | Load raw JSON logs & metadata |
+| **Transform** | Clean + parse timestamps + link songs & artists |
+| **Load** | Insert processed data into normalized tables in PostgreSQL |
 
-Run the following scripts in order:
+Executed using Python scripts + SQL insert queries.
 
-bash
+---
+
+## ▶️ How to Run
+
+### 1️⃣ Clone the repository
+```sh
+git clone <your-repo-url>
+cd Postgres-Based-ETL-Pipeline
+2️⃣ Install required libraries
+sh
+Copy code
+pip install -r requirements.txt
+—or manually:
+
+sh
+Copy code
+pip install psycopg2 pandas numpy
+3️⃣ Setup database tables
+sh
+Copy code
 python create_tables.py
+4️⃣ Run ETL Pipeline
+sh
+Copy code
 python etl.py
-The database will be populated with processed data.
+✅ PostgreSQL database gets populated with analytics-ready tables
 
-File Structure
-text
+📁 Project Structure
+graphql
+Copy code
 Postgres-Based-ETL-Pipeline/
-├── create_tables.py      # Creates and manages database tables
-├── etl.py              # ETL pipeline script
-├── sql_queries.py      # SQL queries for table creation and data insertion
-├── test.ipynb          # Jupyter notebook for testing and validation
-└── README.md           # This file
-Dependencies
+├── create_tables.py       # Creates & resets database schema
+├── etl.py                 # ETL workflow execution script
+├── sql_queries.py         # SQL for create/insert operations
+├── test.ipynb             # Notebook for validation/queries
+└── README.md              # Documentation
+🧩 Dependencies
 Python 3.x
+
+PostgreSQL
 
 psycopg2
 
@@ -69,9 +119,11 @@ pandas
 
 numpy
 
-Install dependencies using:
+📜 License
+Licensed under the MIT License.
+See the LICENSE file for more details.
 
-bash
-pip install psycopg2 pandas numpy
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+✨ Author
+Nishita Rajak
+Data Engineering & Analytics
+🔗 Feel free to ⭐ this repository if you find it useful!
