@@ -40,11 +40,12 @@ After successful execution, structured and analytics-ready tables will be availa
 
 ## Project Structure
 Postgres-Based-ETL-Pipeline/
-├── create_tables.py # Creates and resets database schema
-├── etl.py # Runs the ETL pipeline
-├── sql_queries.py # SQL for DDL and DML operations
-├── test.ipynb # Validation queries and testing
-└── README.md # Documentation
+├── create_tables.py      # Creates and manages database tables
+├── etl.py              # ETL pipeline script
+├── sql_queries.py      # SQL queries for table creation and data insertion
+├── test.ipynb          # Jupyter notebook for testing and validation
+└── README.md           # This file
+
 ## Dependencies
 - Python 3.x
 - PostgreSQL
